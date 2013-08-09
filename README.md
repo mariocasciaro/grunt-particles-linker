@@ -1,4 +1,4 @@
-# grunt-sails-linker
+# grunt-scatter-linker
 
 > Autoinsert script tags (or other filebased tags) in an html file
 

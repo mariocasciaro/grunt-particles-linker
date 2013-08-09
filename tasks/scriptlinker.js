@@ -10,12 +10,17 @@
 
 var util = require('util');
 
+function isUrl(url) {
+  return (/^http[s]?:\/\/./).test(url);
+}
+
+
 module.exports = function(grunt) {
 
 	// Please see the Grunt documentation for more information regarding task
 	// creation: http://gruntjs.com/creating-tasks
 
-	grunt.registerMultiTask('sails-linker', 'Your task description goes here.', function() {
+	grunt.registerMultiTask('scatter-linker', 'Your task description goes here.', function() {
 		// Merge task-specific and/or target-specific options with these defaults.
 		var options = this.options({
 			startTag: '<!--SCRIPTS-->',
@@ -35,13 +40,22 @@ module.exports = function(grunt) {
 
 			// Create string tags
 			scripts = f.src.filter(function (filepath) {
-					// Warn on and remove invalid source files (if nonull was set).
+					if(isUrl(filepath)) {
+            return true; 
+					}
+          
 					if (!grunt.file.exists(filepath)) {
-						grunt.log.warn('Source file "' + filepath + '" not found.');
+						grunt.log.error('Source file "' + filepath + '" not found.');
 						return false;
-					} else { return true; }
+					} 
+          
+          return true; 
 				}).map(function (filepath) {
-					return util.format(options.fileTmpl, filepath.replace(options.appRoot, ''));
+          if(isUrl(filepath)) {
+            return filepath; 
+          } else {
+            return util.format(options.fileTmpl, filepath.replace(options.appRoot, ''));
+          }
 				});
 
 			grunt.file.expand({}, f.dest).forEach(function(dest){
@@ -59,7 +73,7 @@ module.exports = function(grunt) {
             padding += page.charAt(ind);
             ind -= 1;
           }
-          console.log('padding length', padding.length)
+          console.log('padding length', padding.length);
 					newPage = page.substr(0, start + options.startTag.length)+'\n' + padding + scripts.join('\n'+padding) + '\n' + padding + page.substr(end);
 					// Insert the scripts
 					grunt.file.write(dest, newPage);
