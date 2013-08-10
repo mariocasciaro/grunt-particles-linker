@@ -32,31 +32,39 @@ module.exports = function(grunt) {
 
 		// Iterate over all specified file groups.
 		this.files.forEach(function (f) {
-			var scripts = '',
+			var scripts = [],
 				page = '',
 				newPage = '',
 				start = -1,
 				end = -1;
-
-			// Create string tags
-			scripts = f.src.filter(function (filepath) {
-					if(isUrl(filepath)) {
-            return true; 
-					}
+    
+      f.orig.src.forEach(function (filepath) {   
+        grunt.log.writeln("Analyzing " + filepath);
+        if(isUrl(filepath)) {
+          scripts.push(filepath);
+        } else {
+          var expandedFiles = grunt.file.expand({}, filepath);
+          expandedFiles.forEach(function(expandedFile) {
+            if (grunt.file.exists(expandedFile)) {
+              scripts.push(expandedFile);
+            } else {
+              grunt.log.error('Source file "' + expandedFile + '" not found.');
+            }
+          });
+        }
+			});
+      
+      scripts = scripts.map(function (filepath) {
+        var ret;
+        if(isUrl(filepath)) {
+          ret = util.format(options.fileTmpl, filepath);
+        } else {
+          ret = util.format(options.fileTmpl, "/" + filepath.replace(options.appRoot, ''));
+        }
           
-					if (!grunt.file.exists(filepath)) {
-						grunt.log.error('Source file "' + filepath + '" not found.');
-						return false;
-					} 
-          
-          return true; 
-				}).map(function (filepath) {
-          if(isUrl(filepath)) {
-            return filepath; 
-          } else {
-            return util.format(options.fileTmpl, filepath.replace(options.appRoot, ''));
-          }
-				});
+        grunt.log.writeln('Injecting ' + ret);
+        return ret;
+			});
 
 			grunt.file.expand({}, f.dest).forEach(function(dest){
 				page = grunt.file.read(dest);
