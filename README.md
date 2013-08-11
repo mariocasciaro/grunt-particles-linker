@@ -1,4 +1,4 @@
-# grunt-scatter-linker
+# grunt-rally-linker
 
 > Autoinsert script tags (or other filebased tags) in an html file
 

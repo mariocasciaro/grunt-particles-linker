@@ -1,8 +1,8 @@
 {
-  "name": "grunt-scatter-linker",
+  "name": "grunt-rally-linker",
   "description": "Autoinsert script tags in an html file",
   "version": "0.1.0",
-  "homepage": "https://github.com/mariocasciaro/grunt-scatter-linker",
+  "homepage": "https://github.com/mariocasciaro/grunt-rally-linker",
   "contributors": [
     "Zolmeister <zolikahan@gmail.com> (http://zolmeister.com)",
     "scott-laursen <thomas@addgo.com> (www.addgo.com)",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/mariocasciaro/grunt-scatter-linker.git"
+    "url": "https://github.com/mariocasciaro/grunt-rally-linker.git"
   },
   "main": "Gruntfile.js",
   "engines": {
