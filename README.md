@@ -1,4 +1,4 @@
-# grunt-rally-linker
+# grunt-particles-linker
 
 > Autoinsert script tags (or other filebased tags) in an html file
 
@@ -8,23 +8,23 @@ This plugin requires Grunt `~0.4.x`
 When the task is run the destination file(s) is updated with script tags pointing to all the source files. The reason this plugin was built was to automate the process of inserting script tags when building large web apps.
 
 ```shell
-npm install grunt-sails-linker --save-dev
+npm install grunt-particles-linker --save-dev
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-sails-linker');
+grunt.loadNpmTasks('grunt-particles-linker');
 ```
 
-## The "sails-linker" task
+## The "particles-linker" task
 
 ### Overview
-In your project's Gruntfile, add a section named `sails-linker` to the data object passed into `grunt.initConfig()`.
+In your project's Gruntfile, add a section named `particles-linker` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
-  'sails-linker': {
+  'particles-linker': {
     defaultOptions: {
       options: {
         startTag: '<!--SCRIPTS-->',
