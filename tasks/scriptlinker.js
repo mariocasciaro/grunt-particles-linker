@@ -27,7 +27,8 @@ module.exports = function(grunt) {
 			startTag: '<!--SCRIPTS-->',
 			endTag: '<!--SCRIPTS END-->',
 			fileTmpl: '<script src="%s"></script>',
-			appRoot: ''
+			appRoot: '',
+      publicUrlRoot: ''
 		});
 
 
@@ -60,7 +61,7 @@ module.exports = function(grunt) {
         if(isUrl(filepath)) {
           ret = util.format(options.fileTmpl, filepath);
         } else {
-          ret = util.format(options.fileTmpl, path.normalize("/" + filepath.replace(options.appRoot, '')));
+          ret = util.format(options.fileTmpl, path.join("/", options.publicUrlRoot, filepath.replace(options.appRoot, '')));
         }
           
         grunt.log.writeln('Injecting ' + ret);
