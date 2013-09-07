@@ -8,7 +8,8 @@
 
 'use strict';
 
-var util = require('util');
+var util = require('util'),
+  path = require('path');
 
 function isUrl(url) {
   return (/^http[s]?:\/\/./).test(url);
@@ -59,7 +60,7 @@ module.exports = function(grunt) {
         if(isUrl(filepath)) {
           ret = util.format(options.fileTmpl, filepath);
         } else {
-          ret = util.format(options.fileTmpl, "/" + filepath.replace(options.appRoot, ''));
+          ret = util.format(options.fileTmpl, path.normalize("/" + filepath.replace(options.appRoot, '')));
         }
           
         grunt.log.writeln('Injecting ' + ret);
