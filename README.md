@@ -72,10 +72,14 @@ The template used to insert the reference to the script files.
 Type: `String`
 Default value: `''`
 
+The root of the application. Script links are relative from this folder.
+
 #### options.publicUrlRoot
 Type: `String`
 Default value: `''`
 
-The root of the application. Script links are relative from this folder.
+When inserted into the template, the scripts will be prepended with this value
+
+
 
 
