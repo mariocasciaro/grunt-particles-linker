@@ -1,11 +1,12 @@
 # grunt-particles-linker
 
-> Autoinsert script tags (or other filebased tags) in an html file
+Autoinsert script tags (or other filebased tags) in an template file
 
 ## Getting Started
 This plugin requires Grunt `~0.4.x`
 
-When the task is run the destination file(s) is updated with script tags pointing to all the source files. The reason this plugin was built was to automate the process of inserting script tags when building large web apps.
+When the task is run the destination file(s) is updated with script tags pointing to all the source files.
+The reason this plugin was built was to automate the process of inserting script tags when building large web apps.
 
 ```shell
 npm install grunt-particles-linker --save-dev
@@ -62,6 +63,10 @@ Default value: `'<script src="%s"></script>'`
 The template used to insert the reference to the script files.
 
 #### options.appRoot
+Type: `String`
+Default value: `''`
+
+#### options.publicUrlRoot
 Type: `String`
 Default value: `''`
 
