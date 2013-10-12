@@ -2,6 +2,12 @@
 
 Autoinsert script tags (or other filebased tags) in an template file
 
+
+[![NPM](https://nodei.co/npm/grunt-particles-linker.png?downloads=true)](https://nodei.co/npm/grunt-particles-linker/)
+
+[![Build Status](https://travis-ci.org/mariocasciaro/grunt-particles-linker.png)](https://travis-ci.org/mariocasciaro/grunt-particles-linker) [![Dependency Status](https://david-dm.org/mariocasciaro/grunt-particles-linker.png)](https://david-dm.org/mariocasciaro/grunt-particles-linker)
+
+
 ## Getting Started
 This plugin requires Grunt `~0.4.x`
 
