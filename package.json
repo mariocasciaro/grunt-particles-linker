@@ -1,7 +1,7 @@
 {
   "name": "grunt-particles-linker",
   "description": "Autoinsert script/style tags in a template file",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "homepage": "https://github.com/mariocasciaro/grunt-particles-linker",
   "contributors": [
     "Zolmeister <zolikahan@gmail.com> (http://zolmeister.com)",
