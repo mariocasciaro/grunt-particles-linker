@@ -5,7 +5,7 @@ Autoinsert script tags (or other filebased tags) in an template file
 
 [![NPM](https://nodei.co/npm/grunt-particles-linker.png?downloads=true)](https://nodei.co/npm/grunt-particles-linker/)
 
-[![Build Status](https://travis-ci.org/mariocasciaro/grunt-particles-linker.png)](https://travis-ci.org/mariocasciaro/grunt-particles-linker) [![Dependency Status](https://david-dm.org/mariocasciaro/grunt-particles-linker.png)](https://david-dm.org/mariocasciaro/grunt-particles-linker)
+[![Build Status](https://travis-ci.org/particles/grunt-particles-linker.png)](https://travis-ci.org/particles/grunt-particles-linker) [![Dependency Status](https://david-dm.org/particles/grunt-particles-linker.png)](https://david-dm.org/particles/grunt-particles-linker)
 
 
 ## Getting Started
@@ -80,6 +80,9 @@ Default value: `''`
 
 When inserted into the template, the scripts will be prepended with this value
 
+---
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/particles/grunt-particles-linker/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 
 
