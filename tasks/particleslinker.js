@@ -62,7 +62,7 @@ module.exports = function(grunt) {
             ret = util.format(options.fileTmpl, filepath);
           } else {
             ret = util.format(options.fileTmpl, 
-              path.join("/", options.publicUrlRoot, filepath.replace(options.appRoot, '')));
+              path.join("/", options.publicUrlRoot, filepath.replace(options.appRoot, '')).replace(/\\/g, '/'));
           }
 
           grunt.log.writeln('Preparing to inject ' + ret);
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
           var newScripts = scripts;
           if(options.isRelative) {
             newScripts = scripts.map(function(script) {
-              return util.format(options.fileTmpl, path.relative(path.dirname(dest), script));
+              return util.format(options.fileTmpl, path.relative(path.dirname(dest), script).replace(/\\/g, '/'));
             });
           }
           console.log('padding length', padding.length);
