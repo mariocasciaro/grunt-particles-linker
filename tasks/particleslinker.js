@@ -13,7 +13,7 @@ var util = require('util'),
   path = require('path');
 
 function isUrl(url) {
-  return (/^http[s]?:\/\/./).test(url);
+  return (/^(http[s]?:)?\/\/./).test(url);
 }
 
 
@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 				end = -1;
     
       f.orig.src.forEach(function (filepath) {   
-        grunt.log.writeln("Analyzing " + filepath);
+        grunt.verbose.writeln("Analyzing " + filepath);
         if(isUrl(filepath)) {
           scripts.push(filepath);
         } else {
@@ -65,12 +65,12 @@ module.exports = function(grunt) {
               path.join("/", options.publicUrlRoot, filepath.replace(options.appRoot, '')).replace(/\\/g, '/'));
           }
 
-          grunt.log.writeln('Preparing to inject ' + ret);
+          grunt.verbose.writeln('Preparing to inject ' + ret);
           return ret;
         });
       }
       
-
+      var anyUpdated = false;
 			grunt.file.expand({}, f.dest).forEach(function(dest){
 				page = grunt.file.read(dest);
 				start = page.indexOf(options.startTag);
@@ -79,6 +79,7 @@ module.exports = function(grunt) {
 				if (start === -1 || end === -1 || start >= end) {
 					return;
 				} else {
+				  anyUpdated = true;
           var padding ='';
           var ind = start - 1;
           // TODO: Fix this hack
@@ -92,13 +93,16 @@ module.exports = function(grunt) {
               return util.format(options.fileTmpl, path.relative(path.dirname(dest), script).replace(/\\/g, '/'));
             });
           }
-          console.log('padding length', padding.length);
+          grunt.verbose.writeln('padding length', padding.length);
 					newPage = page.substr(0, start + options.startTag.length)+'\n' + padding + newScripts.join('\n'+padding) + '\n' + padding + page.substr(end);
 					// Insert the scripts
 					grunt.file.write(dest, newPage);
 					grunt.log.writeln('File "' + dest + '" updated.');
 				}
 			});
+			if(!anyUpdated) {
+			  grunt.log.error("No files with the specified tag were found");
+			}
 		});
 	});
 };
